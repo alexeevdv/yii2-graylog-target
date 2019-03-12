@@ -21,11 +21,5 @@ class SslOptions extends GelfSslOptions implements Configurable
         if (!empty($config)) {
             Yii::configure($this, $config);
         }
-        $this->init();
-    }
-
-    public function init()
-    {
-
     }
 }
