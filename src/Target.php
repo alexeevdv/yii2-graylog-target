@@ -36,7 +36,7 @@ class Target extends \yii\log\Target
         $messageBuilder = Instance::ensure($this->messageBuilder, MessageBuilderInterface::class);
 
         foreach ($this->messages as $message) {
-            $gelfMessage = $messageBuilder->build($message);
+            $gelfMessage = $messageBuilder->build($this, $message);
             $publisher->publish($gelfMessage);
         }
     }

@@ -8,14 +8,10 @@ use Gelf\Transport\TransportInterface;
 use Yii;
 use yii\base\Configurable;
 use yii\di\Instance;
+use yii\helpers\ArrayHelper;
 
 class Publisher extends GelfPublisher implements Configurable
 {
-    /**
-     * @var TransportInterface[]
-     */
-    public $transports = [];
-
     /**
      * @var MessageValidatorInterface
      */
@@ -23,6 +19,8 @@ class Publisher extends GelfPublisher implements Configurable
 
     public function __construct($config = [])
     {
+        $transportConfigs = ArrayHelper::remove($config, 'transports', []);
+
         if (!empty($config)) {
             Yii::configure($this, $config);
         }
@@ -33,7 +31,7 @@ class Publisher extends GelfPublisher implements Configurable
 
         parent::__construct(null, $this->messageValidator);
 
-        foreach ($this->transports as $transportConfig) {
+        foreach ($transportConfigs as $transportConfig) {
             $this->addTransport(Instance::ensure($transportConfig, TransportInterface::class));
         }
     }

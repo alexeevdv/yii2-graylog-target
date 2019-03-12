@@ -45,6 +45,7 @@ class MessageBuilder extends BaseObject implements MessageBuilderInterface
     {
         return ArrayHelper::getValue([
             Logger::LEVEL_TRACE => LogLevel::DEBUG,
+            Logger::LEVEL_PROFILE => LogLevel::DEBUG,
             Logger::LEVEL_PROFILE_BEGIN => LogLevel::DEBUG,
             Logger::LEVEL_PROFILE_END => LogLevel::DEBUG,
             Logger::LEVEL_INFO => LogLevel::INFO,
