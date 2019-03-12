@@ -1,0 +1,34 @@
+{
+    "name": "alexeevdv/yii2-graylog-target",
+    "description": "Yii2 graylog2 log target",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry V. Alekseev",
+            "email": "mail@alexeevdv.ru"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "alexeevdv\\yii\\graylog\\": "src"
+        }
+    },
+    "require": {
+        "graylog2/gelf-php": "^1.6",
+        "yiisoft/yii2": "^2.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.5",
+        "yiisoft/yii2-coding-standards": "^2.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
