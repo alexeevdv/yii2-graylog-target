@@ -3,6 +3,7 @@
     "description": "Yii2 graylog2 log target",
     "type": "yii2-extension",
     "license": "MIT",
+    "keywords": ["yii2", "graylog", "target", "gelf"],
     "authors": [
         {
             "name": "Dmitry V. Alekseev",
