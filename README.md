@@ -17,13 +17,13 @@ The preferred way to install this extension is through [composer](https://getcom
 Either run
 
 ```bash
-$ composer require alexeevdv/yii2-recaptcha-widget
+$ composer require alexeevdv/yii2-graylog-target
 ```
 
 or add
 
 ```
-"alexeevdv/yii2-recaptcha-widget": "^0.1"
+"alexeevdv/yii2-graylog-target": "^0.1"
 ```
 
 to the ```require``` section of your `composer.json` file.
