@@ -33,7 +33,5 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: composer update $DEFAULT_COMPOSER_FLAGS
-      - name: Run code style checks
-        run: vendor/bin/phpcs --standard=vendor/yiisoft/yii2-coding-standards/Yii2 --extensions=php src
-      - name: Run unit tests with coverage
-        run: vendor/bin/codecept run --coverage --coverage-xml
+      - name: Run tests
+        run: composer run tests
