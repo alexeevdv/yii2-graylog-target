@@ -31,6 +31,7 @@
         "yiisoft/yii2": "^2.0"
     },
     "require-dev": {
+        "behat/gherkin": "4.4.*",
         "codeception/codeception": "^4.0",
         "codeception/module-asserts": "^1.3",
         "yiisoft/yii2-coding-standards": "^2.0"
