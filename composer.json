@@ -44,7 +44,7 @@
     "scripts": {
         "codeception": "@php vendor/bin/codecept run",
         "phpcs": "@php vendor/bin/phpcs --standard=vendor/yiisoft/yii2-coding-standards/Yii2 --extensions=php src",
-        "test": [
+        "tests": [
             "@phpcs",
             "@codeception"
         ]
