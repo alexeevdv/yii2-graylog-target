@@ -83,7 +83,7 @@ $transport = new alexeevdv\yii\graylog\transport\UdpTransport([
 ### TCP transport
 
 ```php
-$transport = new alexeevdv\yii\graylog\transport\UdpTransport([
+$transport = new alexeevdv\yii\graylog\transport\TcpTransport([
     // Host name or IP. Default to 127.0.0.1
     'host' => 'graylog.example.org',
     // TCP port. Default to 12201
