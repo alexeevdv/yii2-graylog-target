@@ -4,10 +4,12 @@ namespace tests\unit;
 
 use alexeevdv\yii\graylog\MessageBuilder;
 use alexeevdv\yii\graylog\Target;
+use Codeception\Test\Unit;
+use Error;
 use Exception;
 use yii\log\Logger;
 
-class MessageBuilderTest extends \Codeception\Test\Unit
+class MessageBuilderTest extends Unit
 {
     public function testBuildSimpleStringMessage()
     {
@@ -41,12 +43,34 @@ class MessageBuilderTest extends \Codeception\Test\Unit
         ]);
 
         $this->assertArraySubset([
-            'short_message' => 'Exception Exception: Kaboom',
+            'short_message' => 'Exception: Kaboom',
             'level' => 4,
             'timestamp' => 1552400424.0,
             'facility' => 'yii2',
             'file' => __FILE__,
-            'line' => 34,
+            'line' => 36,
+            '_category' => 'application',
+        ], $gelfMessage->toArray());
+    }
+
+    public function testBuildErrorMessage()
+    {
+        $exception = new Error('Kaboom');
+        $builder = new MessageBuilder;
+        $gelfMessage = $builder->build($this->make(Target::class), [
+            $exception,
+            Logger::LEVEL_WARNING,
+            'application',
+            1552400424,
+        ]);
+
+        $this->assertArraySubset([
+            'short_message' => 'Error: Kaboom',
+            'level' => 4,
+            'timestamp' => 1552400424.0,
+            'facility' => 'yii2',
+            'file' => __FILE__,
+            'line' => 58,
             '_category' => 'application',
         ], $gelfMessage->toArray());
     }
@@ -123,5 +147,13 @@ class MessageBuilderTest extends \Codeception\Test\Unit
             'line' => 0,
             '_category' => 'application',
         ], $gelfMessage->toArray());
+    }
+
+    private function assertArraySubset(array $needle, array $haystack)
+    {
+        foreach ($needle as $key => $value) {
+            $this->assertArrayHasKey($key, $haystack);
+            $this->assertEquals($value, $haystack[$key]);
+        }
     }
 }

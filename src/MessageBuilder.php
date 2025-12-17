@@ -2,9 +2,9 @@
 
 namespace alexeevdv\yii\graylog;
 
-use Exception;
 use Gelf\Message;
 use Psr\Log\LogLevel;
+use Throwable;
 use yii\base\BaseObject;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
@@ -16,20 +16,19 @@ class MessageBuilder extends BaseObject implements MessageBuilderInterface
     {
         list($text, $level, $category, $timestamp) = $message;
 
-        $gelfMessage = new \Gelf\Message;
+        $gelfMessage = new Message;
         $gelfMessage
             ->setLevel($this->mapLogLevel($level))
             ->setTimestamp($timestamp)
             ->setFacility($target->facility)
             ->setAdditional('category', $category)
             ->setFile('unknown')
-            ->setLine(0)
-        ;
+            ->setLine(0);
 
         if (is_string($text)) {
             $gelfMessage = $gelfMessage->setShortMessage($text);
-        } elseif ($text instanceof Exception) {
-            $gelfMessage = $this->fillMessageWithExceptionData($gelfMessage, $text);
+        } elseif ($text instanceof Throwable) {
+            $gelfMessage = $this->fillMessageWithThrowableData($gelfMessage, $text);
         } else {
             $gelfMessage = $this->fillMessageWithArrayData($gelfMessage, $text);
         }
@@ -54,12 +53,12 @@ class MessageBuilder extends BaseObject implements MessageBuilderInterface
         ], $yiiLevel, LogLevel::INFO);
     }
 
-    private function fillMessageWithExceptionData(Message $message, Exception $exception)
+    private function fillMessageWithThrowableData(Message $message, Throwable $throwable)
     {
-        $message->setShortMessage('Exception ' . get_class($exception) . ': ' . $exception->getMessage());
-        $message->setFullMessage((string) $exception);
-        $message->setLine($exception->getLine());
-        $message->setFile($exception->getFile());
+        $message->setShortMessage(get_class($throwable) . ': ' . $throwable->getMessage());
+        $message->setFullMessage((string)$throwable);
+        $message->setLine($throwable->getLine());
+        $message->setFile($throwable->getFile());
         return $message;
     }
 
