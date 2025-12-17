@@ -1,12 +1,14 @@
 # yii2-graylog-target
 
-[![Build Status](https://api.travis-ci.com/alexeevdv/yii2-graylog-target.svg?branch=master)](https://travis-ci.com/alexeevdv/yii2-graylog-target) 
-[![codecov](https://codecov.io/gh/alexeevdv/yii2-graylog-target/branch/master/graph/badge.svg)](https://codecov.io/gh/alexeevdv/yii2-graylog-target)
-![PHP 5.6](https://img.shields.io/badge/PHP-5.6-green.svg)
-![PHP 7.0](https://img.shields.io/badge/PHP-7.0-green.svg) 
-![PHP 7.1](https://img.shields.io/badge/PHP-7.1-green.svg) 
-![PHP 7.2](https://img.shields.io/badge/PHP-7.2-green.svg)
+[![Build Status](https://github.com/alexeevdv/yii2-graylog-target/workflows/build/badge.svg)](https://github.com/alexeevdv/yii2-graylog-target/actions)
+[![Total Downloads](https://poser.pugx.org/alexeevdv/yii2-graylog-target/downloads)](https://packagist.org/packages/alexeevdv/yii2-graylog-target)
 ![PHP 7.3](https://img.shields.io/badge/PHP-7.3-green.svg)
+![PHP 8.0](https://img.shields.io/badge/PHP-8.0-green.svg)
+![PHP 8.1](https://img.shields.io/badge/PHP-8.1-green.svg)
+![PHP 8.2](https://img.shields.io/badge/PHP-8.2-green.svg)
+![PHP 8.3](https://img.shields.io/badge/PHP-8.3-green.svg)
+![PHP 8.4](https://img.shields.io/badge/PHP-8.4-green.svg)
+![PHP 8.5](https://img.shields.io/badge/PHP-8.5-green.svg)
 
 Yii2 graylog2 log target
 
@@ -23,7 +25,7 @@ $ composer require alexeevdv/yii2-graylog-target
 or add
 
 ```
-"alexeevdv/yii2-graylog-target": "^0.1"
+"alexeevdv/yii2-graylog-target": "^0.2"
 ```
 
 to the ```require``` section of your `composer.json` file.
